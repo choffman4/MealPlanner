@@ -18,7 +18,7 @@ public class ChangeScene {
 
     public static void changeScene(Event event, String strFXMLFileName) throws IOException {
 
-        URL url = new File("src/main/resources/com/example/foodpantry/" + strFXMLFileName).toURI().toURL();
+        URL url = new File("src/main/resources/com/example/mealplanner/" + strFXMLFileName).toURI().toURL();
         Parent root = FXMLLoader.load(url);
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

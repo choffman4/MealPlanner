@@ -1,6 +1,7 @@
 module com.example.mealplanner {
     requires javafx.controls;
     requires javafx.fxml;
+    requires json.simple;
 
 
     opens com.example.mealplanner to javafx.fxml;
