@@ -46,28 +46,6 @@ public class AddRecipeController implements Initializable {
     private Recipe newRecipe = new Recipe();
 
     private ObservableList<String> foodCategory = FXCollections.observableArrayList(DB.getUniqueCategories());
-    private ObservableList<String> meatSpecific = FXCollections.observableArrayList(
-            "Beef, Ground",
-            "Beef, Steak",
-            "Pork, Chops",
-            "Pork, Ground",
-            "Pork, Ham",
-            "Pork, Ribs",
-            "Pork, Roast",
-            "Chicken, Breast",
-            "Chicken, Thighs",
-            "Chicken, Whole",
-            "Chicken, Drumsticks",
-            "Bacon",
-            "Bratwurst",
-            "Sausage",
-            "Hot Dogs",
-            "Shrimp",
-            "Fish, Salmon",
-            "Fish, Tilapia"
-    );
-    private ObservableList<String> dairySpecific = FXCollections.observableArrayList("Milk", "Butter");
-    private ObservableList<String> vegetableSpecific = FXCollections.observableArrayList("Green", "Bananer");
     private ObservableList<String> measurements = FXCollections.observableArrayList("ea", "count", "oz", "lb", "bunch", "cups");
     private ObservableList<String> empty = FXCollections.observableArrayList();
 
@@ -143,24 +121,8 @@ public class AddRecipeController implements Initializable {
     public void getFoodCategory(ActionEvent event) {
         String foodCategory = choiceBoxCategory.getValue();
         LabelRecipeView.setText(foodCategory);
-        if(foodCategory != null) {
-            switch (foodCategory) {
-                case "Meat":
-                    choiceBoxSpecific.setItems(meatSpecific);
-                    choiceBoxSpecific.setOnAction(this::getFoodSpecific);
-                    break;
-                case "Dairy":
-                    choiceBoxSpecific.setItems(dairySpecific);
-                    choiceBoxSpecific.setOnAction(this::getFoodSpecific);
-                    break;
-                case "Vegetable":
-                    choiceBoxSpecific.setItems(vegetableSpecific);
-                    choiceBoxSpecific.setOnAction(this::getFoodSpecific);
-                    break;
-                default:
-                    choiceBoxSpecific.setItems(empty);
-            }
-        }
+        ObservableList<String> foodSpecific = FXCollections.observableArrayList(DB.getCategorySpecifics(choiceBoxCategory.getValue()));
+        choiceBoxSpecific.setItems(foodSpecific);
     }
 
     /***
