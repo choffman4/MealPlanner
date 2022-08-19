@@ -110,4 +110,21 @@ public class DB {
     }
         return categories;
     }
+
+    public static ArrayList<String> getCategorySpecifics(String cat){
+        ArrayList<String> specifics = new ArrayList<String>();
+        String sql = "SELECT ingName FROM recipedb.ingredient WHERE ingCat = (?)";
+        try {
+            Connection con = DriverManager.getConnection(url, user, dbPassword);
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, cat);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                specifics.add(rs.getString("ingName"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return specifics;
+    }
 }
