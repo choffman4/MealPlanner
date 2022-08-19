@@ -45,7 +45,7 @@ public class AddRecipeController implements Initializable {
 
     private Recipe newRecipe = new Recipe();
 
-    private ObservableList<String> foodCategory = FXCollections.observableArrayList("Meat", "Dairy", "Vegetable");
+    private ObservableList<String> foodCategory = FXCollections.observableArrayList(DB.getUniqueCategories());
     private ObservableList<String> meatSpecific = FXCollections.observableArrayList(
             "Beef, Ground",
             "Beef, Steak",
@@ -116,7 +116,7 @@ public class AddRecipeController implements Initializable {
     @FXML
     protected void onIngredientButtonClick(){
         Item newIng = new Item(choiceBoxSpecific.getValue(), Double.parseDouble(txtQuantity.getText()), choiceBoxMeasurement.getValue(), choiceBoxCategory.getValue());
-        newRecipe.addIngredient(newIng);
+//        newRecipe.addIngredient(newIng);
         updateRecipeText();
     }
 

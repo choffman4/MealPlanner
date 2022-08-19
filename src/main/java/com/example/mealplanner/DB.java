@@ -1,13 +1,15 @@
 package com.example.mealplanner;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 public class DB {
     static String url = "jdbc:mysql://localhost:3306/recipedb?allowPublicKeyRetrieval=true&useSSL=false";
     static String user = "root";
     static String dbPassword = "test";
 
     public static boolean addRecipe(String recipeName, String recipeURL) {
-        String sql = "INSERT INTO foodpantry.recipe(RecipeName, RecipeURL) Values(?,?)";
+        String sql = "INSERT INTO recipedb.recipe(RecipeName, RecipeURL) Values(?,?)";
         try {
             Connection con = DriverManager.getConnection(url, user, dbPassword);
             PreparedStatement pst = con.prepareStatement(sql);
@@ -23,7 +25,7 @@ public class DB {
     }
 
     public static boolean addItem(String ingName) {
-        String sql = "INSERT INTO foodpantry.ingredient(ItemName) Values(?)";
+        String sql = "INSERT INTO recipedb.ingredient(ItemName) Values(?)";
         try {
             Connection con = DriverManager.getConnection(url, user, dbPassword);
             PreparedStatement pst = con.prepareStatement(sql);
@@ -38,7 +40,7 @@ public class DB {
     }
 
     public static boolean addRecipeIngredients(int idING, int idRECIPE, double qty, String type) {
-        String sql = "INSERT INTO foodpantry.recipeingredients(ItemID, RecipeID, Quantity, Type) Values(?,?,?,?)";
+        String sql = "INSERT INTO recipedb.recipeingredients(ItemID, RecipeID, Quantity, Type) Values(?,?,?,?)";
         try {
             Connection con = DriverManager.getConnection(url, user, dbPassword);
             PreparedStatement pst = con.prepareStatement(sql);
@@ -57,7 +59,7 @@ public class DB {
 
     public static String getRecipeName(int id) {
         String recipeName = null;
-        String sql = "SELECT RecipeName FROM foodpantry.recipe WHERE RecipeID = (?)";
+        String sql = "SELECT RecipeName FROM recipedb.recipe WHERE RecipeID = (?)";
         try {
             Connection con = DriverManager.getConnection(url, user, dbPassword);
             PreparedStatement pst = con.prepareStatement(sql);
@@ -77,7 +79,7 @@ public class DB {
     //TODO: replace names with correct ones once we have the database set up
     public static String getRecipeIngredients(int id) {
         String recipeIngredients = null;
-        String sql = "SELECT ItemName, Quantity, Type FROM foodpantry.recipeingredients JOIN foodpantry.ingredient ON foodpantry.recipeingredients.ItemID = foodpantry.ingredient.ItemID WHERE RecipeID = (?)";
+        String sql = "SELECT ItemName, Quantity, Type FROM recipedb.recipeingredients JOIN recipedb.ingredient ON recipedb.recipeingredients.ItemID = recipedb.ingredient.ItemID WHERE RecipeID = (?)";
         try {
             Connection con = DriverManager.getConnection(url, user, dbPassword);
             PreparedStatement pst = con.prepareStatement(sql);
@@ -91,5 +93,21 @@ public class DB {
             e.printStackTrace();
         }
         return recipeIngredients;
+    }
+
+    public static ArrayList<String> getUniqueCategories(){
+        ArrayList<String> categories = new ArrayList<String>();
+        String sql = "SELECT DISTINCT ingCat FROM recipedb.ingredient";
+        try {
+            Connection con = DriverManager.getConnection(url, user, dbPassword);
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                categories.add(rs.getString("ingCat"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+    }
+        return categories;
     }
 }
