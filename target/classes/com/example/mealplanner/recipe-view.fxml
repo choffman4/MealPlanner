@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="panePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealplanner.RecipeViewController">
+   <children>
+      <Button fx:id="btnAddNewRecipe" layoutX="482.0" layoutY="14.0" mnemonicParsing="false" onAction="#AddNewRecipe" text="Add New Recipe" />
+      <Label fx:id="labelRecipeView" alignment="TOP_LEFT" layoutX="93.0" layoutY="149.0" prefHeight="215.0" prefWidth="400.0" text="Label" wrapText="true" />
+      <Button fx:id="btnPrevRecipe" layoutX="93.0" layoutY="113.0" mnemonicParsing="false" onAction="#PrevRecipe" text="Back" />
+      <Button fx:id="btnNextRecipe" layoutX="433.0" layoutY="113.0" mnemonicParsing="false" onAction="#NextRecipe" text="Forward" />
+      <Button fx:id="btnAddRecipeToList" layoutX="186.0" layoutY="113.0" mnemonicParsing="false" onAction="#AddRecipeToList" prefHeight="25.0" prefWidth="214.0" text="Add to Shopping List" wrapText="true" />
+      <Button fx:id="btnViewShoppingList" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#ViewShoppingList" text="View Shopping List" />
+      <Label fx:id="labelMealPlanView" alignment="TOP_LEFT" layoutX="93.0" layoutY="387.0" prefHeight="215.0" prefWidth="400.0" text="Label" wrapText="true" />
+   </children>
+</Pane>
