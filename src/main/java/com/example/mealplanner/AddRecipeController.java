@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.TextFlow;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -39,9 +40,10 @@ public class AddRecipeController implements Initializable {
     @FXML
     private TextField txtURL;
     @FXML
-    private Label LabelRecipeView;
+    private Label labelRecipe;
 
     private Recipe newRecipe = new Recipe();
+    private ArrayList<Item> newIngredients = new ArrayList<>();
 
     private ObservableList<String> foodCategory = FXCollections.observableArrayList(DB.getUniqueCategories());
     private ObservableList<String> measurements = FXCollections.observableArrayList("ea", "count", "oz", "lb", "bunch", "cups");
@@ -71,12 +73,14 @@ public class AddRecipeController implements Initializable {
     protected void onNameButtonClick(){
         newRecipe.recipeName = txtRecipeName.getText();
         updateRecipeText();
+        setLabelText();
     }
 
     @FXML
     protected void onURLButtonClick(){
         newRecipe.recipeURL = txtURL.getText();
         updateRecipeText();
+        setLabelText();
     }
 
 
@@ -86,14 +90,21 @@ public class AddRecipeController implements Initializable {
         System.out.println(newRecipe.toString());
         //convert newRecipe to JSON and print to console
         System.out.println(newRecipe.toJSON());
+        DB.addRecipe(newRecipe.recipeName, newRecipe.recipeURL);
+        int newID = DB.getRecipeID(newRecipe.recipeName);
+        for (Item ingredient : newIngredients) {
+            DB.addRecipeIngredients(ingredient.itemID, newID, ingredient.itemQuantity, ingredient.itemType);
+        }
+        DB.getRecipeID(newRecipe.recipeName);
         onResetButtonClick();
     }
 
     @FXML
     protected void onIngredientButtonClick(){
-        Item newIng = new Item(choiceBoxSpecific.getValue(), Double.parseDouble(txtQuantity.getText()), choiceBoxMeasurement.getValue(), choiceBoxCategory.getValue());
-//        newRecipe.addIngredient(newIng);
+        Item newIng = new Item(choiceBoxSpecific.getValue(), DB.getItemID(choiceBoxSpecific.getValue()), Double.parseDouble(txtQuantity.getText()), choiceBoxMeasurement.getValue());
+        newIngredients.add(newIng);
         updateRecipeText();
+        setLabelText();
     }
 
     /**
@@ -118,7 +129,7 @@ public class AddRecipeController implements Initializable {
      */
     public void getFoodCategory(ActionEvent event) {
         String foodCategory = choiceBoxCategory.getValue();
-        LabelRecipeView.setText(foodCategory);
+//        textFlowRecipe.setAccessibleText(foodCategory);
         ObservableList<String> foodSpecific = FXCollections.observableArrayList(DB.getCategorySpecifics(choiceBoxCategory.getValue()));
         choiceBoxSpecific.setItems(foodSpecific);
     }
@@ -131,7 +142,13 @@ public class AddRecipeController implements Initializable {
         //Gets the value of the category and specific food, then displays them
         String category = choiceBoxCategory.getValue();
         String specific = choiceBoxSpecific.getValue();
-        LabelRecipeView.setText(category + ": " + specific);
     }
 
+    public void setLabelText() {
+        String allIngredients = "";
+        for (Item ingredient : newIngredients) {
+            allIngredients += ingredient.itemName + " " + ingredient.itemQuantity + " " + ingredient.itemType + "\r\n";
+        }
+        labelRecipe.setText("New Recipe:\r\n\r\nName: " + newRecipe.recipeName + "\r\n\r\nURL: " + newRecipe.recipeURL + "\r\n\r\nIngredients: \r\n" + allIngredients);
+    }
 }

@@ -40,7 +40,7 @@ public class DB {
     }
 
     public static boolean addRecipeIngredients(int idING, int idRECIPE, double qty, String type) {
-        String sql = "INSERT INTO recipedb.recipeingredients(ItemID, RecipeID, Quantity, Type) Values(?,?,?,?)";
+        String sql = "INSERT INTO recipedb.recipeingredients(idING, idRECIPE, qty, type) Values(?,?,?,?)";
         try {
             Connection con = DriverManager.getConnection(url, user, dbPassword);
             PreparedStatement pst = con.prepareStatement(sql);
@@ -75,8 +75,25 @@ public class DB {
         return recipeName;
     }
 
+    public static int getRecipeID(String recipeName) {
+        int id = 0;
+        String sql = "SELECT idrecipe FROM recipedb.recipe WHERE recipeName = (?)";
+        try {
+            Connection con = DriverManager.getConnection(url, user, dbPassword);
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            pst.setString(1, recipeName);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt("idrecipe");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
     //get recipe ingredients through recipeingredients table, with name from ingredient table
-    //TODO: replace names with correct ones once we have the database set up
     public static String getRecipeIngredients(int id) {
         String recipeIngredients = null;
         String sql = "SELECT ItemName, Quantity, Type FROM recipedb.recipeingredients JOIN recipedb.ingredient ON recipedb.recipeingredients.ItemID = recipedb.ingredient.ItemID WHERE RecipeID = (?)";
@@ -126,5 +143,23 @@ public class DB {
             e.printStackTrace();
         }
         return specifics;
+    }
+
+    public static int getItemID(String name) {
+        int id = 0;
+        String sql = "SELECT idING FROM recipedb.ingredient WHERE ingName = (?)";
+        try {
+            Connection con = DriverManager.getConnection(url, user, dbPassword);
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            pst.setString(1, name);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt("idING");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+    }
+        return id;
     }
 }
