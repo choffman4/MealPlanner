@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -51,7 +52,7 @@ public class AddRecipeController implements Initializable {
 
     @FXML
     protected void onExitButtonClick(ActionEvent event) throws IOException {
-        ChangeScene.changeScene(event, "homepage-view.fxml");
+        ChangeScene.changeScene(event, "chooserecipe.fxml");
     }
 
     /**

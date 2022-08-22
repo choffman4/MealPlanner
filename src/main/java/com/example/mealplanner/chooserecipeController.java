@@ -2,11 +2,14 @@ package com.example.mealplanner;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -36,5 +39,15 @@ public class chooserecipeController implements Initializable {
 
             }
         });
+    }
+
+    @FXML
+    protected void onAddButtonClick(MouseEvent event) throws IOException {
+        ChangeScene.changeScene(event, "addrecipe-view.fxml");
+    }
+
+    @FXML
+    protected void onShoppingButtonClick(MouseEvent event) throws IOException {
+        ChangeScene.changeScene(event, "shoppinglist-view.fxml");
     }
 }
