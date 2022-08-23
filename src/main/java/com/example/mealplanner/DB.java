@@ -94,9 +94,9 @@ public class DB {
     }
 
     //get recipe ingredients through recipeingredients table, with name from ingredient table
-    public static String getRecipeIngredients(int id) {
-        String recipeIngredients = null;
-        String sql = "SELECT ItemName, Quantity, Type FROM recipedb.recipeingredients JOIN recipedb.ingredient ON recipedb.recipeingredients.ItemID = recipedb.ingredient.ItemID WHERE RecipeID = (?)";
+    public static ArrayList<String> getRecipeIngredients(int id) {
+        ArrayList<String> recipeIngredients = new ArrayList<>();
+        String sql = "SELECT ing.ingName, ri.qty, ri.type FROM recipedb.recipeingredients AS ri INNER JOIN recipedb.ingredient AS ing ON ri.idING = ing.idING WHERE idRECIPE = (?)";
         try {
             Connection con = DriverManager.getConnection(url, user, dbPassword);
             PreparedStatement pst = con.prepareStatement(sql);
@@ -104,7 +104,7 @@ public class DB {
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                recipeIngredients = rs.getString("ItemName") + " " + rs.getDouble("Quantity") + " " + rs.getString("Type");
+                recipeIngredients.add(rs.getString("ingName") + " " + rs.getDouble("qty") + " " + rs.getString("type"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -161,5 +161,21 @@ public class DB {
             e.printStackTrace();
     }
         return id;
+    }
+
+    public static ArrayList<String> getRecipes(){
+        ArrayList<String> recipeNames = new ArrayList<String>();
+        String sql = "SELECT recipeName FROM recipedb.recipe";
+        try {
+            Connection con = DriverManager.getConnection(url, user, dbPassword);
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                recipeNames.add(rs.getString("recipeName"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return recipeNames;
     }
 }
