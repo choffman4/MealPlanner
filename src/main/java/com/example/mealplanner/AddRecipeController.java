@@ -22,12 +22,6 @@ import java.util.ResourceBundle;
 public class AddRecipeController implements Initializable {
 
     @FXML
-    private Button btnCompleteRecipe;
-    @FXML
-    private Button btnAddURL;
-    @FXML
-    private Button btnAddIngredient;
-    @FXML
     private ChoiceBox<String> choiceBoxCategory;
     @FXML
     private ChoiceBox<String> choiceBoxSpecific;
@@ -66,53 +60,56 @@ public class AddRecipeController implements Initializable {
         choiceBoxMeasurement.getSelectionModel().clearSelection();
         choiceBoxCategory.getSelectionModel().clearSelection();
         newRecipe = new Recipe();
-        updateRecipeText();
+        newIngredients = new ArrayList<>();
+        setLabelText();
     }
 
     @FXML
     protected void onNameButtonClick(){
         newRecipe.recipeName = txtRecipeName.getText();
-        updateRecipeText();
         setLabelText();
     }
 
     @FXML
     protected void onURLButtonClick(){
         newRecipe.recipeURL = txtURL.getText();
-        updateRecipeText();
         setLabelText();
     }
 
 
-    //when btnCompleteRecipe is clicked, print the recipe to the console
+    /**
+     * when complete button is clicked, this adds a recipe to the database and assigns ingredients for it in recipeingredients
+     */
     @FXML
     protected void onCompleteButtonClick() throws IOException, ParseException {
-        System.out.println(newRecipe.toString());
-        //convert newRecipe to JSON and print to console
-        System.out.println(newRecipe.toJSON());
-        DB.addRecipe(newRecipe.recipeName, newRecipe.recipeURL);
-        int newID = DB.getRecipeID(newRecipe.recipeName);
-        for (Item ingredient : newIngredients) {
-            DB.addRecipeIngredients(ingredient.itemID, newID, ingredient.itemQuantity, ingredient.itemType);
+        if(newRecipe.recipeName != null && newRecipe.recipeName != "" && newRecipe.recipeURL != null && newIngredients.size() > 0){
+            DB.addRecipe(newRecipe.recipeName, newRecipe.recipeURL);
+            int newID = DB.getRecipeID(newRecipe.recipeName);
+            for (Item ingredient : newIngredients) {
+                DB.addRecipeIngredients(ingredient.itemID, newID, ingredient.itemQuantity, ingredient.itemType);
+            }
+            onResetButtonClick();
         }
-        DB.getRecipeID(newRecipe.recipeName);
-        onResetButtonClick();
+        else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Please fill out all fields");
+            alert.showAndWait();
+        }
+
     }
 
     @FXML
     protected void onIngredientButtonClick(){
         Item newIng = new Item(choiceBoxSpecific.getValue(), DB.getItemID(choiceBoxSpecific.getValue()), Double.parseDouble(txtQuantity.getText()), choiceBoxMeasurement.getValue());
         newIngredients.add(newIng);
-        updateRecipeText();
         setLabelText();
     }
 
     /**
      * updates the field underneath entries to display the current recipe being built.
      */
-    private void updateRecipeText() {
-        System.out.println(newRecipe);
-    }
+
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
