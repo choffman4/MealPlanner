@@ -120,7 +120,6 @@ public class AddRecipeController implements Initializable {
         choiceBoxCategory.setItems(foodCategory);
         choiceBoxMeasurement.setItems(measurements);
         choiceBoxCategory.setOnAction(this::getFoodCategory);
-        System.out.println("init");
     }
 
     /**
