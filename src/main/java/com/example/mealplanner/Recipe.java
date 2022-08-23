@@ -17,5 +17,5 @@ public class Recipe {
                 ", recipeURL='" + recipeURL + '\'' +
                 '}';
     }
-    
+
 }

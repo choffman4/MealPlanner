@@ -130,16 +130,6 @@ public class AddRecipeController implements Initializable {
         choiceBoxSpecific.setItems(foodSpecific);
     }
 
-    /***
-     * Displays the selected food at the bottom left of the pane when specific food is chosen
-     * @param event
-     */
-    public void getFoodSpecific(ActionEvent event) {
-        //Gets the value of the category and specific food, then displays them
-        String category = choiceBoxCategory.getValue();
-        String specific = choiceBoxSpecific.getValue();
-    }
-
     public void setLabelText() {
         String allIngredients = "";
         for (Item ingredient : newIngredients) {
