@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class chooserecipeController implements Initializable {
@@ -21,12 +22,13 @@ public class chooserecipeController implements Initializable {
     @FXML
     private Label myRecipeLabel;
 
-    String[] recipes = {"tomato soup", "grilled cheese", "classic american dinner"};
+    ArrayList<String> recipes = new ArrayList<>();
 
     String currentRecipe; // this might need to be something different
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        recipes = DB.getRecipes();
 
         myListView.getItems().addAll(recipes);
 
@@ -35,8 +37,13 @@ public class chooserecipeController implements Initializable {
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
 
                 currentRecipe = myListView.getSelectionModel().getSelectedItem(); //this might have to change See line 23
-                myRecipeLabel.setText(currentRecipe);
-
+//                myRecipeLabel.setText(currentRecipe);
+                ArrayList<String> ingredients = DB.getRecipeIngredients(DB.getRecipeID(currentRecipe));
+                String formattedIngredients = "";
+                for (String ingredient : ingredients) {
+                    formattedIngredients += ingredient + "\r\n";
+                }
+                myRecipeLabel.setText(formattedIngredients);
             }
         });
     }
