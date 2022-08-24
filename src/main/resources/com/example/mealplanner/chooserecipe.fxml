@@ -33,11 +33,17 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealplanner.chooserecipeController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealplanner.chooserecipeController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -86,8 +92,6 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="ButtonAddRecipe" layoutX="480.0" layoutY="290.0" mnemonicParsing="false" onMouseClicked="#onAddButtonClick" text="Add Recipe" />
-            <Button fx:id="ButtonShoppingList" layoutX="474.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onShoppingButtonClick" text="Shopping List" />
       </children>
     </AnchorPane>
   </children>

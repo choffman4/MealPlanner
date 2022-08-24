@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
@@ -15,6 +16,15 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class chooserecipeController implements Initializable {
+
+    @FXML
+    private Button addBtn;
+
+    @FXML
+    private Button exitBtn;
+
+    @FXML
+    private Button shoppingBtn;
 
     @FXML
     private ListView<String> myListView;
