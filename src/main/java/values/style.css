@@ -1,0 +1,9 @@
+.button{
+    -fx-background-color: #828282;
+    -fx-background-radius: 5;
+}
+
+.exit-button{
+    -fx-background-color: #C6292C;
+    -fx-background-radius: 5;
+}
