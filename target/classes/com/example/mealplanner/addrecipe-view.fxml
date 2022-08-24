@@ -19,8 +19,8 @@
       <Label layoutX="270.0" layoutY="6.0" text="Add Recipe" />
       <Button fx:id="btnAddIngredient" layoutX="554.0" layoutY="103.0" mnemonicParsing="false" onMouseClicked="#onIngredientButtonClick" prefHeight="25.0" prefWidth="89.0" text="Add" />
       <Button fx:id="btnReset" layoutX="60.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#onResetButtonClick" prefHeight="25.0" prefWidth="89.0" text="Reset" />
-      <Label fx:id="LabelRecipeView" layoutX="5.0" layoutY="132.0" prefHeight="463.0" prefWidth="641.0" />
       <TextField fx:id="txtURL" layoutX="1.0" layoutY="78.0" prefHeight="25.0" prefWidth="552.0" promptText="Enter Recipe URL" />
       <Button fx:id="btnAddURL" layoutX="554.0" layoutY="78.0" mnemonicParsing="false" onMouseClicked="#onURLButtonClick" prefHeight="25.0" prefWidth="89.0" text="Add" />
+      <Label fx:id="labelRecipe" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="67.0" layoutY="206.0" prefHeight="348.0" prefWidth="540.0" text="New Recipe:" textAlignment="CENTER" />
    </children>
 </Pane>
