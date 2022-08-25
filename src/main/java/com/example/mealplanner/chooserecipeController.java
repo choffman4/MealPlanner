@@ -24,6 +24,9 @@ public class chooserecipeController implements Initializable {
     private Button exitBtn;
 
     @FXML
+    private Button addToBtn;
+
+    @FXML
     private Button shoppingBtn;
 
     @FXML
