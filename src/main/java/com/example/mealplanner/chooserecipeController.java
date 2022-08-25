@@ -65,6 +65,6 @@ public class chooserecipeController implements Initializable {
 
     @FXML
     protected void onShoppingButtonClick(MouseEvent event) throws IOException {
-        ChangeScene.changeScene(event, "shoppinglist-view.fxml");
+        ChangeScene.changeScene(event, "shoppingList.fxml");
     }
 }
