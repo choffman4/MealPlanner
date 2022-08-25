@@ -18,11 +18,11 @@ public class StartupView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (DB.isConnected()) {
-            labelConn.setText("Connection Status:\r\nConnected");
-        } else {
-            labelConn.setText("Connection Status:\r\nNot Connected");
-        }
+//        if (DB.isConnected()) {
+//            labelConn.setText("Connection Status:\r\nConnected");
+//        } else {
+//            labelConn.setText("Connection Status:\r\nNot Connected");
+//        }
     }
 
     @FXML
