@@ -178,4 +178,14 @@ public class DB {
         }
         return recipeNames;
     }
+
+    public static boolean isConnected() {
+        try {
+            Connection con = DriverManager.getConnection(url, user, dbPassword);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

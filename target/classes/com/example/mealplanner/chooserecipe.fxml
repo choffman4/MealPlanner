@@ -33,11 +33,18 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealplanner.chooserecipeController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealplanner.chooserecipeController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -86,6 +93,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
+
         <Button fx:id="addBtn" layoutX="103.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#onAddButtonClick" stylesheets="@../../../../java/values/style.css" text="Add a Recipe" textFill="#fffafa">
           <font>
             <Font name="System Bold" size="14.0" />

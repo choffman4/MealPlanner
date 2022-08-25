@@ -33,10 +33,6 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -48,8 +44,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealplanner.chooserecipeController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealplanner.chooserecipeController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -111,9 +106,6 @@
           <font>
             <Font name="System Bold" size="14.0" />
           </font></Button>
-            <Button fx:id="btnAddRecipe" layoutX="522.0" layoutY="22.0" mnemonicParsing="false" text="Add New Recipe" />
-            <Button fx:id="btnExit" layoutX="29.0" layoutY="22.0" mnemonicParsing="false" text="Back" />
-            <Button fx:id="btnAddtoShoppingList" layoutX="372.0" layoutY="22.0" mnemonicParsing="false" text="Add to Shopping List" />
       </children>
     </AnchorPane>
   </children>
