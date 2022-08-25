@@ -1,5 +1,7 @@
 package com.example.mealplanner;
 
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -188,4 +190,5 @@ public class DB {
             return false;
         }
     }
+
 }

@@ -9,12 +9,12 @@
 <AnchorPane fx:id="anchorPane" prefHeight="600.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealplanner.ShoppingList">
    <children>
       <ListView fx:id="listShoppingList" layoutX="37.0" layoutY="96.0" prefHeight="450.0" prefWidth="575.0" />
-      <Button fx:id="btnExit" layoutX="37.0" layoutY="22.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="49.0" text="Back">
+      <Button fx:id="btnExit" layoutX="37.0" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#onExitButtonClicked" prefHeight="30.0" prefWidth="49.0" text="Back">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnPrint" layoutX="548.0" layoutY="22.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="64.0" text="Print">
+      <Button fx:id="btnPrint" layoutX="548.0" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#recieveSelectedRecipes" prefHeight="30.0" prefWidth="64.0" text="Print">
          <font>
             <Font size="14.0" />
          </font>

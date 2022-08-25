@@ -33,6 +33,7 @@ public class chooserecipeController implements Initializable {
     private Label myRecipeLabel;
 
     ArrayList<String> recipes = new ArrayList<>();
+    ArrayList<String> selectedRecipes = new ArrayList<>();
 
     String currentRecipe; // this might need to be something different
 
@@ -65,6 +66,9 @@ public class chooserecipeController implements Initializable {
 
     @FXML
     protected void onShoppingButtonClick(MouseEvent event) throws IOException {
-        ChangeScene.changeScene(event, "shoppingList.fxml");
+        selectedRecipes.add("1");
+        selectedRecipes.add("2");
+        selectedRecipes.add("3");
+        ChangeScene.changeScene(event, "shoppingList.fxml", selectedRecipes);
     }
 }
