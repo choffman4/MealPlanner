@@ -39,30 +39,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealplanner.chooserecipeController">
+<VBox prefHeight="600.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealplanner.chooserecipeController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxWidth="-1.0" minHeight="-Infinity" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <ListView fx:id="myListView" editable="true" layoutX="55.0" layoutY="91.0" prefHeight="200.0" prefWidth="200.0" />
-            <Label fx:id="myRecipeLabel" alignment="CENTER" layoutX="293.0" layoutY="74.0" prefHeight="229.0" prefWidth="326.0" text="Choose a Recipe">
+            <ListView fx:id="myListView" editable="true" layoutX="55.0" layoutY="91.0" prefHeight="340.0" prefWidth="237.0" />
+            <Label fx:id="myRecipeLabel" alignment="CENTER" layoutX="293.0" layoutY="92.0" prefHeight="340.0" prefWidth="326.0" text="Choose a Recipe">
                <font>
-                  <Font size="20.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
 
-        <Button fx:id="addBtn" layoutX="103.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#onAddButtonClick" stylesheets="@../../../../java/values/style.css" text="Add a Recipe" textFill="#fffafa">
+        <Button fx:id="addBtn" layoutX="101.0" layoutY="490.0" mnemonicParsing="false" onMouseClicked="#onAddButtonClick" stylesheets="@../../../../java/values/style.css" text="Add a Recipe" textFill="#fffafa">
           <font>
             <Font name="System Bold" size="14.0" />
           </font></Button>
-        <Button fx:id="shoppingBtn" layoutX="294.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#onShoppingButtonClick" stylesheets="@../../../../java/values/style.css" text="My Shopping List" textFill="WHITE">
+        <Button fx:id="shoppingBtn" layoutX="292.0" layoutY="490.0" mnemonicParsing="false" onMouseClicked="#onShoppingButtonClick" stylesheets="@../../../../java/values/style.css" text="My Shopping List" textFill="WHITE">
           <font>
             <Font name="System Bold" size="14.0" />
           </font></Button>
-        <Button fx:id="exitBtn" layoutX="525.0" layoutY="324.0" mnemonicParsing="false" onMouseClicked="#onExitButtonClick" styleClass="exit-button" stylesheets="@../../../../java/values/style.css" text="Exit" textFill="WHITE">
+        <Button fx:id="exitBtn" layoutX="523.0" layoutY="492.0" mnemonicParsing="false" onMouseClicked="#onExitButtonClick" styleClass="exit-button" stylesheets="@../../../../java/values/style.css" text="Exit" textFill="WHITE">
           <font>
             <Font name="System Bold" size="14.0" />
           </font></Button>
