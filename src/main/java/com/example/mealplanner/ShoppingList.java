@@ -43,7 +43,6 @@ public class ShoppingList implements Initializable {
         for (String recipe : selectedRecipes) {
             shoppingList.addAll(DB.getRecipeIngredients(Integer.parseInt(recipe)));
         }
-
-        listShoppingList.setItems(shoppingList);
+        listShoppingList.setItems(shoppingList.sorted());
     }
 }
