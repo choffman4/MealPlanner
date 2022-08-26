@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -63,15 +64,23 @@ public class chooserecipeController implements Initializable {
     }
 
     @FXML
+    protected void onRecipeButtonClick(MouseEvent event) {
+        selectedRecipes.add(String.valueOf(DB.getRecipeID(currentRecipe)));
+    }
+
+    @FXML
+    protected void onExitButtonClick(MouseEvent event) throws IOException {
+        Stage stage = (Stage) exitBtn.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
     protected void onAddButtonClick(MouseEvent event) throws IOException {
         ChangeScene.changeScene(event, "addrecipe-view.fxml");
     }
 
     @FXML
     protected void onShoppingButtonClick(MouseEvent event) throws IOException {
-        selectedRecipes.add("1");
-        selectedRecipes.add("2");
-        selectedRecipes.add("3");
         ChangeScene.changeScene(event, "shoppingList.fxml", selectedRecipes);
     }
 }
