@@ -131,15 +131,8 @@ public class AddRecipeController implements Initializable {
     }
 
     /***
-     * Displays the selected food at the bottom left of the pane when specific food is chosen
-     * @param event
+     * Displays the recipe info to the user at the bottom of the pane when called
      */
-    public void getFoodSpecific(ActionEvent event) {
-        //Gets the value of the category and specific food, then displays them
-        String category = choiceBoxCategory.getValue();
-        String specific = choiceBoxSpecific.getValue();
-    }
-
     public void setLabelText() {
         String allIngredients = "";
         for (Item ingredient : newIngredients) {
