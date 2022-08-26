@@ -94,12 +94,12 @@
         </Label>
             <ImageView fitHeight="376.0" fitWidth="510.0">
                <image>
-                  <Image url="@Pictures/Food%20Pantry%20new.png" />
+                  <Image url="@../../../../../../../../../../Pictures/StartPagePhoto1.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="255.0" fitWidth="138.0" layoutX="510.0">
                <image>
-                  <Image url="@Pictures/new%20new%20222.png" />
+                  <Image url="@../../../../../../../../../../Pictures/StartPagePhoto2.png" />
                </image>
             </ImageView>
             <Button layoutX="516.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#onStartButtonClicked" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #6B8E23;" text="➜" textFill="WHITE">
